@@ -1,5 +1,5 @@
 // utils/helpers.ts
-import { StatusColor } from '../types';
+import type { StatusColor } from '../types';
 
 export const formatCurrency = (amount: number): string => {
     return new Intl.NumberFormat('en-US', {

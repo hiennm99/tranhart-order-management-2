@@ -1,6 +1,7 @@
 // contexts/MultiShopContext.tsx
-import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { Shop, MultiShopContextType } from '../types';
+import { createContext, useContext, useState } from 'react';
+import type {ReactNode} from "react";
+import type { Shop, MultiShopContextType } from '../types';
 
 const MultiShopContext = createContext<MultiShopContextType | null>(null);
 

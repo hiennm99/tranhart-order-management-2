@@ -1,5 +1,4 @@
 // components/layout/Header.tsx
-import React from 'react';
 import { Bell, Search, Settings, User, Menu } from 'lucide-react';
 import { useMultiShop } from '../../contexts/MultiShopContext';
 import ShopSelector from './ShopSelector';

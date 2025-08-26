@@ -1,5 +1,5 @@
 // App.tsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { MultiShopProvider } from './contexts/MultiShopContext';
 import Header from './components/layout/Header';
 import Sidebar from './components/layout/Sidebar';

@@ -1,0 +1,215 @@
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Smooth transitions */
+* {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Loading spinner */
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Glass morphism effect */
+.glass {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Custom focus styles */
+.focus-ring:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    border-color: #3b82f6;
+}
+
+/* Hover effects */
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Status indicators */
+.status-indicator {
+    position: relative;
+}
+
+.status-indicator::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.status-indicator.online::before {
+    background-color: #10b981;
+}
+
+.status-indicator.offline::before {
+    background-color: #ef4444;
+}
+
+/* Card hover effects */
+.card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Button styles */
+.btn-primary {
+    @apply bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors;
+}
+
+.btn-secondary {
+    @apply bg-gray-100 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-200 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors;
+}
+
+.btn-success {
+    @apply bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors;
+}
+
+.btn-danger {
+    @apply bg-red-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors;
+}
+
+/* Table styles */
+.table {
+    @apply w-full border-collapse;
+}
+
+.table th {
+    @apply bg-gray-50 px-4 py-3 text-left text-sm font-medium text-gray-900 border-b border-gray-200;
+}
+
+.table td {
+    @apply px-4 py-3 text-sm text-gray-900 border-b border-gray-200;
+}
+
+.table tr:hover {
+    @apply bg-gray-50;
+}
+
+/* Form styles */
+.form-input {
+    @apply block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+.form-select {
+    @apply block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+.form-checkbox {
+    @apply rounded border-gray-300 text-blue-600 shadow-sm focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+}
+
+.form-radio {
+    @apply border-gray-300 text-blue-600 shadow-sm focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+}
+
+/* Toast/Notification styles */
+.toast {
+    @apply fixed top-4 right-4 max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden;
+    z-index: 1000;
+}
+
+.toast-success {
+    @apply border-l-4 border-green-500;
+}
+
+.toast-error {
+    @apply border-l-4 border-red-500;
+}
+
+.toast-warning {
+    @apply border-l-4 border-yellow-500;
+}
+
+.toast-info {
+    @apply border-l-4 border-blue-500;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .mobile-hidden {
+        display: none;
+    }
+
+    .mobile-full {
+        width: 100%;
+    }
+
+    .mobile-stack {
+        flex-direction: column;
+    }
+}
+
+/* Print styles */
+@media print {
+    .print-hidden {
+        display: none !important;
+    }
+
+    .print-visible {
+        display: block !important;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+}

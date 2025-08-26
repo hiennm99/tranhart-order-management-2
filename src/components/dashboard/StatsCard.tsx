@@ -1,5 +1,4 @@
 // components/dashboard/StatsCard.tsx
-import React from 'react';
 import {
     DollarSign,
     ShoppingCart,

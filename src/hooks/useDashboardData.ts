@@ -2,10 +2,10 @@
 import { useMemo } from 'react';
 import { useMultiShop } from '../contexts/MultiShopContext';
 import { mockOrders, mockProducts } from '../data/mockData';
-import { ShopAnalytics } from '../types';
+import type { ShopAnalytics } from '../types';
 
 export function useDashboardData() {
-    const { activeShop, isGlobalView } = useMultiShop();
+    const { activeShop, } = useMultiShop();
 
     const analytics: ShopAnalytics = useMemo(() => {
         const orders = activeShop

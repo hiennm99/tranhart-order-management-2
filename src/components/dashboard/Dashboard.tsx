@@ -1,5 +1,4 @@
 // components/dashboard/Dashboard.tsx
-import React from 'react';
 import { Plus, Globe } from 'lucide-react';
 import { useMultiShop } from '../../contexts/MultiShopContext';
 import StatsCard from './StatsCard';

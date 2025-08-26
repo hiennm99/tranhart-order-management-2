@@ -1,7 +1,8 @@
 // components/layout/ShopSelector.tsx
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { ChevronDown, Globe, Store, Check } from 'lucide-react';
 import { useMultiShop } from '../../contexts/MultiShopContext';
+import type { Shop } from "../../types";
 
 export default function ShopSelector() {
     const { shops, activeShop, setActiveShop, isGlobalView, toggleGlobalView } = useMultiShop();
