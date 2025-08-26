@@ -1,55 +1,65 @@
-// App.tsx
-import { useState } from 'react';
-import { MultiShopProvider } from './contexts/MultiShopContext';
-import Header from './components/layout/Header';
-import Sidebar from './components/layout/Sidebar';
-import Dashboard from './components/dashboard/Dashboard';
-import OrdersPage from './components/orders/OrdersPage';
-import ProductsPage from './components/products/ProductsPage';
-import CustomersPage from './components/customers/CustomersPage';
-import AnalyticsPage from './components/analytics/AnalyticsPage';
+import React, { useState } from 'react';
+import { Layout } from './components/layout/Layout';
+import { DashboardPage } from './pages/Dashboard';
+import { OrdersPage } from './pages/Orders';
+import { ComingSoon } from './components/common/ComingSoon';
+import { useOrders } from './hooks/useOrders';
+import { useStats } from './hooks/useStats';
+import { useSidebar } from './hooks/useSidebar';
 
-function App() {
-    const [currentView, setCurrentView] = useState('dashboard');
-    const [sidebarOpen, setSidebarOpen] = useState(false);
+const App: React.FC = () => {
+    const [activeTab, setActiveTab] = useState('dashboard');
+    const { sidebarOpen, toggleSidebar } = useSidebar();
 
-    const renderCurrentView = () => {
-        switch (currentView) {
+    const {
+        orders,
+        filteredOrders,
+        searchTerm,
+        setSearchTerm,
+        selectedShop,
+        setSelectedShop
+    } = useOrders();
+
+    const stats = useStats(orders, selectedShop);
+
+    const renderActivePage = () => {
+        switch (activeTab) {
             case 'dashboard':
-                return <Dashboard />;
+                return (
+                    <DashboardPage
+                        orders={orders}
+                        filteredOrders={filteredOrders}
+                        selectedShop={selectedShop}
+                        stats={stats}
+                    />
+                );
             case 'orders':
-                return <OrdersPage />;
-            case 'products':
-                return <ProductsPage />;
-            case 'customers':
-                return <CustomersPage />;
-            case 'analytics':
-                return <AnalyticsPage />;
+                return (
+                    <OrdersPage
+                        filteredOrders={filteredOrders}
+                        searchTerm={searchTerm}
+                        onSearchChange={setSearchTerm}
+                    />
+                );
             default:
-                return <Dashboard />;
+                return <ComingSoon pageName={activeTab} />;
         }
     };
 
     return (
-        <MultiShopProvider>
-            <div className="min-h-screen bg-gray-100 flex">
-                <Sidebar
-                    currentView={currentView}
-                    setCurrentView={setCurrentView}
-                    isOpen={sidebarOpen}
-                    onClose={() => setSidebarOpen(false)}
-                />
-
-                <div className="flex-1 flex flex-col">
-                    <Header onMenuClick={() => setSidebarOpen(true)} />
-
-                    <main className="flex-1 p-6">
-                        {renderCurrentView()}
-                    </main>
-                </div>
-            </div>
-        </MultiShopProvider>
+        <Layout
+            activeTab={activeTab}
+            sidebarOpen={sidebarOpen}
+            selectedShop={selectedShop}
+            searchTerm={searchTerm}
+            onTabChange={setActiveTab}
+            onToggleSidebar={toggleSidebar}
+            onShopChange={setSelectedShop}
+            onSearchChange={setSearchTerm}
+        >
+            {renderActivePage()}
+        </Layout>
     );
-}
+};
 
 export default App;
